@@ -9,7 +9,9 @@ get '/comment/new' do
 end
 
 post '/comment' do
-
+  #Comment.create(title: params[:title], content: params[:content])
+  comment = Comment.create(params[:comment])
+  redirect ("/comment/#{comment.id}")
 end
 
 # Existing Comment
