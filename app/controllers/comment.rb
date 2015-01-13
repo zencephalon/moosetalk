@@ -26,7 +26,9 @@ get '/comment/:id/edit' do |id|
 end
 
 put '/comment/:id' do |id|
-
+  comment = Comment.find(id)
+  comment.update(params[:comment])
+  redirect ("/comment/#{comment.id}")
 end
 
 delete '/comment/:id' do |id|
