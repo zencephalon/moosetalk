@@ -5,7 +5,7 @@ end
 
 # New Comment
 get '/comment/new' do
-
+  erb :'comment/new'
 end
 
 post '/comment' do
