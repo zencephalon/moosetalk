@@ -6,7 +6,7 @@ end
 
 post '/comment' do
   comment = Comment.create(params[:comment])
-  redirect ("/comment/#{comment.id}")
+  redirect ("/article/#{comment.article_id}")
 end
 
 # Existing Comment
