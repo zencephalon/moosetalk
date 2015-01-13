@@ -1,0 +1,13 @@
+<div class="article">
+  Title: <a href="<%= @article.url %>"><%= @article.title %></a>
+
+  <div class="article_reply_box">
+    <%= erb :'comment/new', locals: {article_id: @article.id} %>
+  </div>
+
+  <ul>
+    <% @article.comments.each do |comment| %>
+      <li><%= erb :'comment/show', locals: {comment: comment} %></li>
+    <% end %>
+  </ul>
+</div>
