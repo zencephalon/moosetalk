@@ -1,0 +1,1 @@
+Article.create(title: "zencephalon", url: "http://zencephalon.com")
