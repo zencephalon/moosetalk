@@ -4,11 +4,6 @@ get '/comment/all' do
   erb :'comment/index'
 end
 
-# New Comment
-get '/comment/new' do
-  erb :'comment/new'
-end
-
 post '/comment' do
   comment = Comment.create(params[:comment])
   redirect ("/comment/#{comment.id}")
