@@ -14,7 +14,8 @@ end
 
 # Existing Comment
 get '/comment/:id' do |id|
-
+  @comment = Comment.find(id)
+  erb :'comment/show'
 end
 
 get '/comment/:id/edit' do |id|
