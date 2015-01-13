@@ -33,5 +33,6 @@ put '/comment/:id' do |id|
 end
 
 delete '/comment/:id' do |id|
-
+  Comment.find(id).destroy
+  redirect "/comment/all"
 end
