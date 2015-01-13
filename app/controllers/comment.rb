@@ -21,7 +21,8 @@ get '/comment/:id' do |id|
 end
 
 get '/comment/:id/edit' do |id|
-
+  @comment = Comment.find(id)
+  erb :'comment/edit'
 end
 
 put '/comment/:id' do |id|
