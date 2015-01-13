@@ -1,6 +1,7 @@
 # Index
 get '/comment/all' do
-
+  @comments = Comment.all
+  erb :'comment/index'
 end
 
 # New Comment
