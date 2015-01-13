@@ -1,6 +1,11 @@
 <div class="comment">
-Title: <%= comment.title %>
-<p><%= comment.content %></p>
+  Title: <%= comment.title %>
+  <p><%= comment.content %></p>
 
-<a href="/comment/<%= comment.id %>/edit">Edit</a>
+  <a href="/comment/<%= comment.id %>/edit">Edit</a>
+  
+  <form action="/comment/<%= comment.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete!">
+  </form>
 </div>
