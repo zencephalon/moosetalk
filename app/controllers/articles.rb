@@ -1,4 +1,8 @@
 # Index
+get '/' do
+  redirect '/comment/all'
+end
+
 get '/article/all' do
   @articles = Article.all
   erb :'article/index'
