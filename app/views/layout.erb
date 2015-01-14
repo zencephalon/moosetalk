@@ -23,6 +23,14 @@
 <div id="content">
   <header>
     <a href="/"><img src="/img/zenchinese.png" class="logo"></a>
+    <div id="login_bar">
+    <% if current_user %>
+      Welcome, <%= current_user.name %> | <a href="/signout">Signout</a>
+
+    <% else %>
+      <a href="/login">Login</a> | <a href="/signup">Signup</a>
+    <% end %>
+    </div>
   </header>
   <%= yield %>
 </div>
