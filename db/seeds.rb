@@ -1,1 +1,3 @@
-Article.create(title: "zencephalon", url: "http://zencephalon.com")
+(1..10).each do |num|
+  Article.create(title: num.to_s, url: "http://zencephalon.com")
+end
