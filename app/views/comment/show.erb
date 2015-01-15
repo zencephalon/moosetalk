@@ -2,6 +2,8 @@
   Title: <%= comment.title %>
   <p><%= comment.content %></p>
 
+  <p>Written by: <%= comment.user.try(:name) %></p>
+
   <a href="/comment/<%= comment.id %>/edit">Edit</a>
   
   <form action="/comment/<%= comment.id %>" method="POST">

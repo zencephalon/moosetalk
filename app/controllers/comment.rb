@@ -5,6 +5,7 @@ get '/comment/all' do
 end
 
 post '/comment' do
+  params[:comment][:user] = current_user
   comment = Comment.create(params[:comment])
   redirect ("/article/#{comment.article_id}")
 end
