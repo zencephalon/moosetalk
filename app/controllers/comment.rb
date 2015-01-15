@@ -5,8 +5,16 @@ get '/comment/all' do
 end
 
 post '/comment' do
-  params[:comment][:user] = current_user
-  comment = Comment.create(params[:comment])
+  if current_user
+    params[:comment][:user] = current_user
+    comment = Comment.new(params[:comment])
+    unless comment.save
+      parse_ar_errors_for_display!(comment.errors.messages)
+    end
+  else
+    add_error("Please sign in to post a comment.")
+  end
+  
   redirect ("/article/#{comment.article_id}")
 end
 
