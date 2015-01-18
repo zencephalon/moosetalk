@@ -1,0 +1,10 @@
+<% if current_user %>
+<div class="new_article_form">
+  <form action="/article" method="POST">
+    title: <input type="text" name="article[title]"><br>
+    url: <input type="text" name="article[url]"><br>
+    tags: <input type="text" name="tags"><br>
+    <input type="submit">
+  </form>
+</div>
+<% end %>
