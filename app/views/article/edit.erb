@@ -1,0 +1,12 @@
+<% if current_user %>
+<div class="edit_article_form">
+  <form action="/article/<%= @article.id %>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+
+    title: <input type="text" name="article[title]" value="<%= @article.title %>"><br>
+    url: <input type="text" name="article[url]" value="<%= @article.url %>"><br>
+    tags: <input type="text" name="tags" value="<%= @article.tags_str %>"><br>
+    <input type="submit">
+  </form>
+</div>
+<% end %>
