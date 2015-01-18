@@ -1,6 +1,8 @@
 <div class="article">
   Title: <a href="<%= @article.url %>"><%= @article.title %></a>
 
+  <p>Tags: <%= @article.tags_str %></p>
+
   <div class="article_reply_box">
     <%= erb :'comment/new', locals: {article_id: @article.id} %>
   </div>

@@ -15,6 +15,7 @@ end
 
 post '/article' do
   article = Article.create(params[:article])
+  article.parse_tags!(params[:tags])
   redirect ("/article/#{article.id}")
 end
 
@@ -32,6 +33,7 @@ end
 put '/article/:id' do |id|
   article = Article.find(id)
   article.update(params[:article])
+  article.parse_tags!(params[:tags])
   redirect ("/article/#{article.id}")
 end
 
