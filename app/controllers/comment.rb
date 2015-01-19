@@ -24,18 +24,18 @@ get '/comment/:id' do |id|
   erb :'comment/show', locals: {comment: @comment}
 end
 
-get '/comment/:id/edit' do |id|
+get '/comment/:id/edit', auth: :user do |id|
   @comment = Comment.find(id)
   erb :'comment/edit'
 end
 
-put '/comment/:id' do |id|
+put '/comment/:id', auth: :user do |id|
   comment = Comment.find(id)
   comment.update(params[:comment])
   redirect ("/comment/#{comment.id}")
 end
 
-delete '/comment/:id' do |id|
+delete '/comment/:id', auth: :user do |id|
   Comment.find(id).destroy
   redirect "/comment/all"
 end
