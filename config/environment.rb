@@ -36,8 +36,10 @@ configure do
   register do
     def auth(type)
       condition do
-        add_error!("Not authorized, please login.")
-        redirect '/login' unless send("current_#{type}")
+        unless send("current_#{type}")
+          redirect '/login'
+          add_error!("Not authorized, please login.")
+        end
       end
     end
   end
