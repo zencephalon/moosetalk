@@ -32,7 +32,12 @@ end
 put '/comment/:id', auth: :user do |id|
   comment = Comment.find(id)
   comment.update(params[:comment])
-  redirect ("/comment/#{comment.id}")
+
+  if request.xhr?
+    erb :'comment/show', locals: {comment: comment}, layout: false
+  else
+    redirect ("/comment/#{comment.id}")
+  end
 end
 
 delete '/comment/:id', auth: :user do |id|
