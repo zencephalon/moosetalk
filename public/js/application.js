@@ -1,5 +1,29 @@
 $(document).ready(function() {
-  $('form.new_comment').on('submit', function(event) {
+  var $comment_list = $('ul.comment_list');
+
+  $comment_list.on('submit', 'form.edit_comment', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+
+    $.ajax({
+      type: 'PUT',
+      url: $target.attr('action'),
+      data: $target.serialize()
+    }).done(function(response) {
+      $target.closest('li').html(response);
+    })
+  })
+
+  //$('a.edit_comment_link').on('click', function(event) {
+  $comment_list.on('click', 'a.edit_comment_link', function(event){
+    event.preventDefault();
+    var $target = $(event.target);
+
+    $target.closest('.comment').children('.update_form_box').first().show();
+  })
+
+
+  $comment_list.on('submit', 'form.new_comment', function(event) {
     event.preventDefault();
     var $target = $(event.target);
 
@@ -17,7 +41,7 @@ $(document).ready(function() {
     })
   })
 
-  $('form.comment_delete').on('submit', function(event) {
+  $comment_list.on('submit', 'form.comment_delete', function(event) {
     event.preventDefault();
     var $target = $(event.target);
 
