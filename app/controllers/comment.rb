@@ -25,8 +25,8 @@ get '/comment/:id' do |id|
 end
 
 get '/comment/:id/edit', auth: :user do |id|
-  @comment = Comment.find(id)
-  erb :'comment/edit'
+  comment = Comment.find(id)
+  erb :'comment/edit', locals: {comment: comment}
 end
 
 put '/comment/:id', auth: :user do |id|
