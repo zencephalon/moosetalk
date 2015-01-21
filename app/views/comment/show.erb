@@ -6,12 +6,17 @@
 
   <% if current_user.may_edit?(comment) %>
     <div class="edit_buttons">
-      <a href="/comment/<%= comment.id %>/edit">Edit</a>
+      <a href="/comment/<%= comment.id %>/edit" class="edit_comment_link">Edit</a>
       
       <form action="/comment/<%= comment.id %>" method="POST" class="comment_delete">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete!">
       </form>
+    </div>
+
+    <div class="update_form_box">
+      <%= erb :'comment/edit', locals: {comment: comment} %>
+      <br>
     </div>
   <% end %>
 
