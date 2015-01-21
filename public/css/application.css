@@ -48,6 +48,10 @@ a:hover {
   height: 2em;
 }
 
+.update_form_box {
+    display: none;
+}
+
 code {
     font-family: Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
     -webkit-border-radius: 1px;
