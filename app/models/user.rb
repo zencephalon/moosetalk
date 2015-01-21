@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
 
   has_many :senders, through: :received_messages, source: :sender
   has_many :receivers, through: :sent_messages, source: :receiver
+
+  def may_edit?(item)
+    #item.user_id == self.id
+    true
+  end
 end
