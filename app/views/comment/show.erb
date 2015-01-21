@@ -4,10 +4,26 @@
 
   <p>Written by: <%= comment.user.try(:name) %></p>
 
-  <a href="/comment/<%= comment.id %>/edit">Edit</a>
-  
-  <form action="/comment/<%= comment.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete!">
-  </form>
+  <% if current_user.may_edit?(comment) %>
+    <div class="edit_buttons">
+      <a href="/comment/<%= comment.id %>/edit">Edit</a>
+      
+      <form action="/comment/<%= comment.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete!">
+      </form>
+    </div>
+  <% end %>
+
+  <div class="reply_box">
+    <%= erb :'comment/new', locals: {article_id: comment.article.id, parent_id: comment.id} %>
+  </div>
+
+  <div class="replies">
+    <ul>
+      <% comment.replies.each do |comment| %>
+        <li><%= erb :'comment/show', locals: {comment: comment} %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
