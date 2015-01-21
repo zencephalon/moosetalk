@@ -37,5 +37,9 @@ end
 
 delete '/comment/:id', auth: :user do |id|
   Comment.find(id).destroy
-  redirect "/comment/all"
+  if request.xhr?
+    "deleted"
+  else
+    redirect "/comment/all"
+  end
 end

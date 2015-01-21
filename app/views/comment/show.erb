@@ -8,7 +8,7 @@
     <div class="edit_buttons">
       <a href="/comment/<%= comment.id %>/edit">Edit</a>
       
-      <form action="/comment/<%= comment.id %>" method="POST">
+      <form action="/comment/<%= comment.id %>" method="POST" class="comment_delete">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete!">
       </form>

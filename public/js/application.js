@@ -4,4 +4,15 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('form.comment_delete').on('submit', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+
+    $.ajax({
+      type: 'DELETE',
+      url: $target.attr('action')
+    }).done(function(response) {
+      $target.closest('.comment').remove()
+    })
+  });
 });
