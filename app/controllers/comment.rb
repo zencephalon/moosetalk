@@ -4,18 +4,18 @@ get '/comment/all' do
   erb :'comment/index'
 end
 
-post '/comment' do
-  if current_user
-    params[:comment][:user] = current_user
-    comment = Comment.new(params[:comment])
-    unless comment.save
-      parse_ar_errors_for_display!(comment.errors.messages)
-    end
-  else
-    add_error("Please sign in to post a comment.")
+post '/comment', auth: :user do
+  params[:comment][:user] = current_user
+  comment = Comment.new(params[:comment])
+  unless comment.save
+    parse_ar_errors_for_display!(comment.errors.messages)
   end
-  
-  redirect ("/article/#{comment.article_id}")
+
+  if request.xhr?
+    erb :'comment/show', locals: {comment: comment}, layout: false
+  else
+    redirect ("/article/#{comment.article_id}")
+  end
 end
 
 # Existing Comment

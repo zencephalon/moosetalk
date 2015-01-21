@@ -7,7 +7,7 @@
     <%= erb :'comment/new', locals: {article_id: @article.id, parent_id: nil} %>
   </div>
 
-  <ul>
+  <ul class="comment_list">
     <% @article.comments.each do |comment| %>
       <li><%= erb :'comment/show', locals: {comment: comment} %></li>
     <% end %>

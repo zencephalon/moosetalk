@@ -1,6 +1,6 @@
 <% if current_user %>
 <div class="new_comment_form">
-  <form action="/comment" method="POST">
+  <form action="/comment" method="POST" class="new_comment">
     <input type="text" name="comment[title]"><br>
     <input type="hidden" name="comment[parent_id]" value="<%= parent_id %>">
     <input type="hidden" name="comment[article_id]" value="<%= article_id %>">

@@ -1,9 +1,22 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('form.new_comment').on('submit', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    $target.children('input[type=submit]').val("Submitting...");
+
+    $.ajax({
+      type: 'POST',
+      url: $target.attr('action'),
+      data: $target.serialize()
+    }).done(function (response) {
+      $target.closest('.article').children('.comment_list').first().append('<li>' + response + '</li>')
+      $target[0].reset();
+      $target.children('input[type=submit]').val("Submit");
+
+    })
+  })
+
   $('form.comment_delete').on('submit', function(event) {
     event.preventDefault();
     var $target = $(event.target);
